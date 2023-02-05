@@ -29,7 +29,10 @@ feedbackForm.addEventListener('input', throttle(feedbackHolder, 500));
 
 feedbackForm.addEventListener('submit', e => {
   e.preventDefault();
-  localStorage.removeItem('feedback-form-state');
   e.currentTarget.reset();
-  console.log(feedbackObj);
+  if (Object.keys(feedbackObj).length !== 0) {
+    console.log(feedbackObj);
+  }
+  localStorage.removeItem('feedback-form-state');
+  feedbackObj = {};
 });
